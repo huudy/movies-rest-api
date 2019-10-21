@@ -4,8 +4,6 @@ const router = new express.Router()
 
 router.post('/movies', async (req, res) => {
     const movie = new Movie(req.body)
-    console.log(movie);
-
     try {
         await movie.save()
         res.status(201).send(movie)
