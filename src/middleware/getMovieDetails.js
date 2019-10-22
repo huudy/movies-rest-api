@@ -1,10 +1,23 @@
-const fetch = require('node-fetch')
+const axios = require("axios");
 
 const getMovieDetails = async (req, res, next) => {
     try {
+        const {
+            title
+        } = req.body
+        const formattedTittle = title.split(' ').join('+')
+        let url = `https://www.omdbapi.com/?t=${formattedTittle}&apikey=303bd9c4`
+        const response = await axios.get(url);
+        const data = response.data;
+        req.body = {
+            ...data
+        }
+        if (data)
+            next()
+    } catch (e) {
+        res.status(500).send(e);
 
-        next()
-    } catch (e) {}
+    }
 }
 
 module.exports = getMovieDetails

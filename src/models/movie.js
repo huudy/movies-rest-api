@@ -1,56 +1,56 @@
 const mongoose = require('mongoose')
 
 const movieSchema = new mongoose.Schema({
-    title: {
+    Title: {
         type: String,
         required: true
     },
-    year: {
+    Year: {
         type: String,
     },
-    rated: {
+    Rated: {
         type: String,
     },
-    released: {
+    Released: {
         type: String,
     },
-    runtime: {
+    Runtime: {
         type: String,
     },
-    genre: {
+    Genre: {
         type: String,
     },
-    director: {
+    Director: {
         type: String,
     },
-    writer: {
+    Writer: {
         type: String,
     },
-    actors: {
+    Actors: {
         type: String,
     },
-    plot: {
+    Plot: {
         type: String,
     },
-    language: {
+    Language: {
         type: String,
     },
-    country: {
+    Country: {
         type: String,
     },
-    awards: {
+    Awards: {
         type: String,
     },
-    poster: {
+    Poster: {
         type: String,
     },
-    metascore: {
+    Metascore: {
         type: String,
     },
     imdbRating: {
         type: String,
     },
-    runtime: {
+    Runtime: {
         type: String,
     },
     imdbRating: {
@@ -62,26 +62,26 @@ const movieSchema = new mongoose.Schema({
     imdbID: {
         type: String,
     },
-    type: {
+    Type: {
         type: String,
     },
-    dvd: {
+    DVD: {
         type: String,
     },
-    boxOffice: {
+    BoxOffice: {
         type: String,
     },
-    production: {
+    Production: {
         type: String,
     },
-    website: {
+    Website: {
         type: String,
     },
-    ratings: [{
-        source: {
+    Ratings: [{
+        Source: {
             type: String
         },
-        value: {
+        Value: {
             type: String
         }
     }]

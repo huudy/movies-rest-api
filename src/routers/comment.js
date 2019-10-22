@@ -21,5 +21,20 @@ router.get('/comments', async (req, res) => {
     }
 })
 
+router.delete('/comments/:id', async (req, res) => {
+    try {
+        const comment = await Comment.findOneAndDelete({
+            _id: req.params.id
+        })
+
+        if (!comment) {
+            res.status(404).send()
+        }
+
+        res.send(comment)
+    } catch (e) {
+        res.status(500).send()
+    }
+})
 
 module.exports = router

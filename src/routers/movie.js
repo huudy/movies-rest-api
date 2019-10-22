@@ -1,8 +1,9 @@
 const express = require('express')
 const Movie = require('../models/movie')
+const getDetails = require('../middleware/getMovieDetails')
 const router = new express.Router()
 
-router.post('/movies', async (req, res) => {
+router.post('/movies', getDetails, async (req, res) => {
     const movie = new Movie(req.body)
     try {
         await movie.save()
