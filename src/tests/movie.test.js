@@ -29,11 +29,11 @@ test('Should fetch all movies', async () => {
     expect(response.body.length).toEqual(2)
 })
 
-// test('Should not delete other movies', async () => {
-//     const response = await request(app)
-//         .delete(`/movies/${movieOne._id}`)
-//         .send()
-//         .expect(404)
-//     const movie = await Movie.findById(movieOne._id)
-//     expect(movie).not.toBeNull()
-// })
+test('Should delete one movie', async () => {
+    const response = await request(app)
+        .delete(`/movies/${movieOne._id}`)
+        .send()
+        .expect(200)
+    const movie = await Movie.findById(movieOne._id)
+    expect(movie).toBeNull()
+})

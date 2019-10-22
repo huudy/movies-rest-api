@@ -31,11 +31,11 @@ test('Should fetch all comments', async () => {
     expect(response.body.length).toEqual(3)
 })
 
-// test('Should not delete other users comments', async () => {
-//     const response = await request(app)
-//         .delete(`/comments/${commentOne._id}`)
-//         .send()
-//         .expect(404)
-//     const comment = await comment.findById(commentOne._id)
-//     expect(comment).not.toBeNull()
-// })
+test('Should delete one comment', async () => {
+    const response = await request(app)
+        .delete(`/comments/${commentOne._id}`)
+        .send()
+        .expect(200)
+    const comment = await Comment.findById(commentOne._id)
+    expect(comment).toBeNull()
+})

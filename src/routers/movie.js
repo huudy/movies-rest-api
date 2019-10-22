@@ -22,4 +22,23 @@ router.get('/movies', async (req, res) => {
     }
 })
 
+router.delete('/movies/:id', async (req, res) => {
+    try {
+        const movie = await Movie.findOneAndDelete({
+            _id: req.params.id
+        })
+
+        if (!movie) {
+            res.status(404).send()
+        }
+
+        res.send(movie)
+    } catch (e) {
+        res.status(500).send()
+    }
+})
+
+
+
+
 module.exports = router
