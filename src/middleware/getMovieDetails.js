@@ -6,7 +6,7 @@ const getMovieDetails = async (req, res, next) => {
             title
         } = req.body
         const formattedTittle = title.split(' ').join('+')
-        let url = `https://www.omdbapi.com/?t=${formattedTittle}&apikey=303bd9c4`
+        let url = `https://www.omdbapi.com/?t=${formattedTittle}&apikey=${process.env.OMDB_API_KEY}`
         const response = await axios.get(url);
         const data = response.data;
         req.body = {
