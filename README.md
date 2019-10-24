@@ -2,35 +2,40 @@
 
 **STEPS**
 
-1. git clone https://github.com/huudy/movies-rest-api.git
-2. cd movies-rest-api
-3. npm i
+1. `git clone https://github.com/huudy/movies-rest-api.git`
+2. `cd movies-rest-api`
+3. `npm i`
 
-4. CREATE A FOLDER STRUCTURE LIKE THIS :
-   ![Screenshot from 2019-10-23 21-29-06](https://user-images.githubusercontent.com/15052640/67427693-e380f380-f5dc-11e9-8887-8c28c2ecc42a.png)
-   content of two files:
-   dev.env
+4. CREATE A FOLDER STRUCTURE LIKE THIS :<br />
+   
+   ![structure](https://user-images.githubusercontent.com/15052640/67496579-e4696200-f67c-11e9-8a4c-c4aba48bfb0c.png)
+   content of three files:
+   - **dev.env:**
    PORT=3000
    MONGODB_URI=mongodb://127.0.0.1:27017/movie-rest
    OMDB_API_KEY=*x*x*x*x
 
-   test.env
+   - **test.env:**
    PORT=3000
    MONGODB_URI=mongodb://127.0.0.1:27017/movie-rest-test
    OMDB_API_KEY=*x*x*x*x
 
+
+   - **dc.env:**
+   PORT=3000
+   MONGODB_URI=mongodb://mongo:27017/movie-rest-test
+   OMDB_API_KEY=*x*x*x*x
+   
+   You can get the OMDB_API_KEY from here => https://www.omdbapi.com/
+   
 5. RUN APP:
-   npm run dev (make sure you have mongo db installed locally that is up and running otherwise you will get a connection error )
+   `npm run dev` (make sure you have mongo db installed locally that is up and running otherwise you will get a connection error )
 
 6. RUN TESTS:
-   npm run test
+   `npm run test`
 
 7. RUN DOCKER:
-   docker-compose up --build (make sure you have docker and docker-compose installed if not please follow the link https://docs.docker.com/compose/install/ )
-
-REMEMBER:
-change dev.env MONGODB_URI:
-MONGODB_URI=mongodb://127.0.0.1:27017/movie-rest
+   `docker-compose up --build` (make sure you have docker and docker-compose installed if not please follow the link https://docs.docker.com/compose/install/ )
 
 - **URL**
 
@@ -45,14 +50,18 @@ MONGODB_URI=mongodb://127.0.0.1:27017/movie-rest
 
 * **Data Params**
 
-  { title: 'your_title'}
+   `POST`
+   /movies
+  `{ title: 'your_title'}`
+  
+  `POST`
+  /comments
+  `{ author: 'author_name', text:'comment_text'}`
 
 * **Success Response:**
 
-  <_What should the status code be on success and is there any returned data? This is useful when people need to to know what their callbacks should expect!_>
-
-  - **Code:** 200 <br />
-    **Content:** `{ title : Superman, message:'Movie Superman saved sucessfully', plot:'' }`
+  - **Code:** 201 <br />
+    **Content:** `{"Title":"Batman","Plot":"The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker.","Message":"Movie Batman was successfully saved to the DB"}`
 
 * **Error Response:**
 
@@ -70,8 +79,5 @@ MONGODB_URI=mongodb://127.0.0.1:27017/movie-rest
 
 <\_\_>
 
-- **Notes:**
+* **Live Demo:**
 
-  <_This is where all uncertainties, commentary, discussion etc. can go. I recommend timestamping and identifying oneself when leaving comments here._>
-
-sudo docker run [...] --env-file ./my_env.list [...]
