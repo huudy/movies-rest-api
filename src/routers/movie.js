@@ -7,6 +7,10 @@ router.post('/movies', getDetails, async (req, res) => {
     const movie = new Movie(req.body)
     try {
         await movie.save()
+        req.body = {
+            Title,
+            Plot
+        }
         res.status(201).send(movie)
     } catch (e) {
         res.status(400).send(e)
