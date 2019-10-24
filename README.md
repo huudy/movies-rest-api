@@ -8,33 +8,33 @@
 
 4. CREATE A FOLDER STRUCTURE LIKE THIS :<br />
    
-   ![structure](https://user-images.githubusercontent.com/15052640/67496579-e4696200-f67c-11e9-8a4c-c4aba48bfb0c.png)
+   ![structure](https://user-images.githubusercontent.com/15052640/67496579-e4696200-f67c-11e9-8a4c-c4aba48bfb0c.png)<br />
    content of three files:
    - **dev.env:**
-   PORT=3000
-   MONGODB_URI=mongodb://127.0.0.1:27017/movie-rest
-   OMDB_API_KEY=*x*x*x*x
+  `PORT=3000`
+  `MONGODB_URI=mongodb://127.0.0.1:27017/movie-rest`
+  `OMDB_API_KEY=*x*x*x*x`
 
    - **test.env:**
-   PORT=3000
-   MONGODB_URI=mongodb://127.0.0.1:27017/movie-rest-test
-   OMDB_API_KEY=*x*x*x*x
+   `PORT=3000`
+   `MONGODB_URI=mongodb://127.0.0.1:27017/movie-rest-test`
+   `OMDB_API_KEY=*x*x*x*x`
 
 
    - **dc.env:**
-   PORT=3000
-   MONGODB_URI=mongodb://mongo:27017/movie-rest-test
-   OMDB_API_KEY=*x*x*x*x
+   `PORT=3000`
+   `MONGODB_URI=mongodb://mongo:27017/movie-rest-test`
+   `OMDB_API_KEY=*x*x*x*x`
    
    You can get the OMDB_API_KEY from here => https://www.omdbapi.com/
    
-5. RUN APP:
+5. RUN APP:<br />
    `npm run dev` (make sure you have mongo db installed locally that is up and running otherwise you will get a connection error )
 
-6. RUN TESTS:
+6. RUN TESTS:<br />
    `npm run test`
 
-7. RUN DOCKER:
+7. RUN DOCKER:<br />
    `docker-compose up --build` (make sure you have docker and docker-compose installed if not please follow the link https://docs.docker.com/compose/install/ )
 
 - **URL**
@@ -60,24 +60,28 @@
 
 * **Success Response:**
 
+`POST`/movies
   - **Code:** 201 <br />
     **Content:** `{"Title":"Batman","Plot":"The Dark Knight of Gotham City begins his war on crime with his first major enemy being the clownishly homicidal Joker.","Message":"Movie Batman was successfully saved to the DB"}`
+ 
+ `POST`/comments
+  - **Code:** 201 <br />
+    **Content:** `{"message": "Comment for author: Adam was successfully saved!"}`
 
 * **Error Response:**
 
-  <_Most endpoints will have many ways they can fail. From unauthorized access, to wrongful parameters etc. All of those should be liste d here. It might seem repetitive, but it helps prevent assumptions from being made where they should be._>
-
-  - **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "Log in" }`
+  - **Code:** 409 CONFLICT <br />
+    **Content:** `{"message":"Movie MOVIE_NAME already exists!"}`
 
   OR
 
   - **Code:** 500 INTERNAL ERROR <br />
-    **Content:** `{ error : "Please report to a support team!" }`
+    **Content:** `{ error : "error" }`
 
 * **Sample Call:**
+`curl --header "Content-Type: application/json" -d "{\"title\":\"puss in boots\"}" http://localhost:3000/movies`<br />
 
-<\_\_>
+`curl --header "Content-Type: application/json" -d "{\"author\":\"Adam\",\"text\":\"First Comment\"}" http://localhost:3000/comments`
 
 * **Live Demo:**
-
+ https://shrouded-reaches-33580.herokuapp.com/
