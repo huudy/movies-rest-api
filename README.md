@@ -6,7 +6,7 @@
 2. `cd movies-rest-api`
 3. `npm i`
 
-4. CREATE A FOLDER STRUCTURE LIKE THIS :<br />
+4. CREATE A CONFIG FOLDER WITH THREE FILES :<br />
    
    ![structure](https://user-images.githubusercontent.com/15052640/67496579-e4696200-f67c-11e9-8a4c-c4aba48bfb0c.png)<br />
    content of three files:
